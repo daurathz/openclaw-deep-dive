@@ -1,0 +1,110 @@
+{
+  "_comment": "OpenClaw 安全基线配置示例",
+  "_description": "这是推荐的最小权限配置，适合生产环境",
+  
+  "gateway": {
+    "mode": "local",
+    "bind": "loopback",
+    "port": 18789,
+    "auth": {
+      "mode": "token",
+      "token": "${OPENCLAW_GATEWAY_TOKEN}"
+    }
+  },
+  
+  "session": {
+    "dmScope": "per-channel-peer",
+    "mainKey": "main",
+    "reset": {
+      "mode": "daily",
+      "atHour": 4
+    }
+  },
+  
+  "tools": {
+    "profile": "messaging",
+    "deny": [
+      "group:automation",
+      "group:runtime",
+      "group:fs",
+      "sessions_spawn",
+      "sessions_send"
+    ],
+    "fs": {
+      "workspaceOnly": true
+    },
+    "exec": {
+      "security": "deny",
+      "ask": "always"
+    },
+    "elevated": {
+      "enabled": false
+    }
+  },
+  
+  "channels": {
+    "slack": {
+      "token": "${SLACK_BOT_TOKEN}",
+      "signingSecret": "${SLACK_SIGNING_SECRET}",
+      "dmPolicy": "pairing",
+      "allowFrom": ["U05AN0GGM3M"],
+      "groups": {
+        "*": {
+          "requireMention": true
+        }
+      }
+    },
+    "whatsapp": {
+      "dmPolicy": "pairing",
+      "groups": {
+        "*": {
+          "requireMention": true
+        }
+      }
+    }
+  },
+  
+  "agents": {
+    "defaults": {
+      "workspace": "~/.openclaw/workspace-{agentId}",
+      "model": "bailian/qwen3.5-plus",
+      "sandbox": {
+        "mode": "all",
+        "scope": "agent",
+        "workspaceAccess": "ro"
+      }
+    },
+    "list": [
+      {
+        "id": "peter",
+        "workspace": "~/.openclaw/workspace-peter",
+        "model": "bailian/qwen3.5-plus",
+        "sandbox": {
+          "mode": "off"
+        },
+        "tools": {
+          "allow": ["read", "write", "edit", "exec", "brave-search", "slack"],
+          "deny": []
+        }
+      },
+      {
+        "id": "alfred",
+        "workspace": "~/.openclaw/workspace-alfred",
+        "model": "bailian/qwen3.5-plus",
+        "sandbox": {
+          "mode": "all",
+          "workspaceAccess": "ro"
+        },
+        "tools": {
+          "allow": ["read", "brave-search", "slack"],
+          "deny": ["write", "edit", "exec"]
+        }
+      }
+    ]
+  },
+  
+  "logging": {
+    "redactSensitive": "tools",
+    "level": "info"
+  }
+}

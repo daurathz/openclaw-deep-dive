@@ -1,0 +1,78 @@
+{
+  "_comment": "会话配置示例 - 不同场景下的 dmScope 配置",
+  
+  "examples": [
+    {
+      "name": "单用户场景（默认）",
+      "description": "只有你自己能发消息给 bot，所有 DM 共享一个会话",
+      "config": {
+        "session": {
+          "dmScope": "main"
+        }
+      },
+      "sessionKeys": {
+        "from_slack": "agent:peter:main",
+        "from_whatsapp": "agent:peter:main",
+        "from_telegram": "agent:peter:main"
+      },
+      "pros": ["对话连续性好", "跨设备无缝切换"],
+      "cons": ["如果多人使用会共享上下文"],
+      "recommended_for": "个人使用，单一操作员"
+    },
+    
+    {
+      "name": "多用户场景（推荐）",
+      "description": "多人可以给 bot 发消息，每个用户独立会话",
+      "config": {
+        "session": {
+          "dmScope": "per-channel-peer"
+        }
+      },
+      "sessionKeys": {
+        "alice_slack": "agent:peter:slack:dm:U_ALICE",
+        "bob_slack": "agent:peter:slack:dm:U_BOB",
+        "alice_whatsapp": "agent:peter:whatsapp:dm:+8613800138000"
+      },
+      "pros": ["用户隔离", "隐私保护", "避免上下文泄露"],
+      "cons": ["同一用户不同设备会话不共享"],
+      "recommended_for": "团队共享 bot，家庭多用户"
+    },
+    
+    {
+      "name": "多账户场景",
+      "description": "同一个 Slack workspace 有多个 bot 账户",
+      "config": {
+        "session": {
+          "dmScope": "per-account-channel-peer"
+        }
+      },
+      "sessionKeys": {
+        "alice_bot1": "agent:peter:slack:account1:dm:U_ALICE",
+        "alice_bot2": "agent:peter:slack:account2:dm:U_ALICE"
+      },
+      "pros": ["账户隔离", "精细控制"],
+      "cons": ["配置复杂"],
+      "recommended_for": "多 bot 账户运营"
+    },
+    
+    {
+      "name": "跨设备连续对话",
+      "description": "同一用户在 Slack 和 WhatsApp 共享会话",
+      "config": {
+        "session": {
+          "dmScope": "per-peer",
+          "identityLinks": {
+            "laooe": ["slack:U05AN0GGM3M", "whatsapp:+8613800138000"]
+          }
+        }
+      },
+      "sessionKeys": {
+        "laooe_slack": "agent:peter:dm:laooe",
+        "laooe_whatsapp": "agent:peter:dm:laooe"
+      },
+      "pros": ["跨设备连续性", "统一上下文"],
+      "cons": ["需要维护 identityLinks"],
+      "recommended_for": "个人多设备使用"
+    }
+  ]
+}
