@@ -1,19 +1,20 @@
 # 源码走读进度追踪
 
-**最后更新:** 2026-03-11 00:28  
-**当前任务:** Session Pruning 完成 ✅ 阶段 1 核心架构 100% 完成！
+**最后更新:** 2026-03-11 00:40  
+**当前任务:** Messages & Channels 完成，继续阶段 2
 
 ---
 
 ## 📍 当前位置
 
-**阶段:** 1 - 核心架构 ✅ 完成  
-**下一步:** 阶段 2 - 消息流 (Message Flow)
+**阶段:** 2 - 消息流 (Message Flow)  
+**进度:** 1/3 完成
 
 ---
 
 ## ✅ 已完成
 
+### 阶段 1：核心架构 ✅ 100%
 | 时间 | 模块 | 文件 | 笔记 |
 |------|------|------|------|
 | 11:50 | Gateway | 架构设计 | [gateway-architecture.md](./core/gateway-architecture.md) |
@@ -23,17 +24,12 @@
 | 00:23 | Compaction | 压缩机制 | [compaction-mechanism.md](./core/compaction-mechanism.md) |
 | 00:28 | Pruning | 修剪机制 | [session-pruning.md](./core/session-pruning.md) |
 
----
-
-## 🎯 阶段 2：消息流 (Message Flow)
-
-**目标:** 理解消息如何路由和交付
-
-| 序号 | 模块 | 文件 | 状态 |
+### 阶段 2：消息流 ⏳ 进行中
+| 时间 | 模块 | 文件 | 笔记 |
 |------|------|------|------|
-| 2.1 | Channels | 通道系统 | ⏳ 待读 |
-| 2.2 | Routing | 消息路由 | ⏳ 待读 |
-| 2.3 | Delivery | 消息交付 | ⏳ 待读 |
+| 00:40 | Messages | 消息流 | [messages-channels.md](./channels/messages-channels.md) |
+| ⏳ | Routing | 消息路由 | - |
+| ⏳ | Delivery | 消息交付 | - |
 
 ---
 
