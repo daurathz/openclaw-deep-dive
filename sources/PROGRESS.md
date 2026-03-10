@@ -1,14 +1,14 @@
 # 源码走读进度追踪
 
-**最后更新:** 2026-03-11 00:23  
-**当前任务:** Compaction 完成，准备阅读 Session Pruning
+**最后更新:** 2026-03-11 00:28  
+**当前任务:** Session Pruning 完成 ✅ 阶段 1 核心架构 100% 完成！
 
 ---
 
 ## 📍 当前位置
 
-**阶段:** 1 - 核心架构  
-**下一步:** Session Pruning 机制
+**阶段:** 1 - 核心架构 ✅ 完成  
+**下一步:** 阶段 2 - 消息流 (Message Flow)
 
 ---
 
@@ -21,14 +21,19 @@
 | 13:05 | Session | 管理逻辑 | [session-management.md](./core/session-management.md) |
 | 00:17 | Context | 组装机制 | [context-assembly.md](./core/context-assembly.md) |
 | 00:23 | Compaction | 压缩机制 | [compaction-mechanism.md](./core/compaction-mechanism.md) |
+| 00:28 | Pruning | 修剪机制 | [session-pruning.md](./core/session-pruning.md) |
 
 ---
 
-## ⏳ 进行中
+## 🎯 阶段 2：消息流 (Message Flow)
 
-| 开始时间 | 模块 | 文件 | 预计完成 |
-|----------|------|------|----------|
-| 00:23 | Pruning | 修剪机制 | 00:30 |
+**目标:** 理解消息如何路由和交付
+
+| 序号 | 模块 | 文件 | 状态 |
+|------|------|------|------|
+| 2.1 | Channels | 通道系统 | ⏳ 待读 |
+| 2.2 | Routing | 消息路由 | ⏳ 待读 |
+| 2.3 | Delivery | 消息交付 | ⏳ 待读 |
 
 ---
 
