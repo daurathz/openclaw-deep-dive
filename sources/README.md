@@ -1,22 +1,66 @@
 # OpenClaw 源码走读计划
 
 **启动时间:** 2026-03-10 11:45  
-**学习方式:** 每 5 分钟心跳自动阅读 + 整理笔记  
+**学习方式:** 每 10 分钟心跳自动阅读 + 整理笔记  
 **目标:** 系统理解 OpenClaw 架构设计
+
+---
+
+## 📊 进度概览
+
+- **当前阶段:** 1 (核心架构)
+- **已读文件:** 2/13 (15%)
+- **最后更新:** 2026-03-10 13:05
+- **GitHub:** https://github.com/daurathz/openclaw-deep-dive/tree/main/sources
 
 ---
 
 ## 📖 学习路径
 
-### 阶段 1：核心架构 (Core Architecture)
+### 阶段 1：核心架构 (Core Architecture) ✅ 50% 完成
 **目标:** 理解 Agent 如何启动和运行
 
 | 序号 | 模块 | 文件 | 状态 | 笔记 |
 |------|------|------|------|------|
-| 1.1 | Gateway | `gateway/` 入口 | ⏳ 待读 | - |
-| 1.2 | Agent Loop | `agent/` 循环逻辑 | ⏳ 待读 | - |
-| 1.3 | Session | `session/` 管理 | ⏳ 待读 | - |
-| 1.4 | Context | `context/` 组装 | ⏳ 待读 | - |
+| 1.1 | Gateway | 架构设计 | ✅ 完成 | [gateway-architecture.md](./core/gateway-architecture.md) |
+| 1.2 | Agent Loop | 循环逻辑 | ✅ 完成 | [agent-loop.md](./core/agent-loop.md) |
+| 1.3 | Session | 管理逻辑 | 🔄 进行中 | - |
+| 1.4 | Context | 组装机制 | ⏳ 待读 | - |
+
+### 阶段 2：消息流 (Message Flow)
+**目标:** 理解消息如何路由和交付
+
+| 序号 | 模块 | 文件 | 状态 | 笔记 |
+|------|------|------|------|------|
+| 2.1 | Channels | `channels/` 通道 | ⏳ 待读 | - |
+| 2.2 | Routing | `routing/` 路由 | ⏳ 待读 | - |
+| 2.3 | Delivery | `delivery/` 交付 | ⏳ 待读 | - |
+
+### 阶段 3：工具系统 (Tools & Skills)
+**目标:** 理解能力如何扩展
+
+| 序号 | 模块 | 文件 | 状态 | 笔记 |
+|------|------|------|------|------|
+| 3.1 | Tools | `tools/` 基础工具 | ⏳ 待读 | - |
+| 3.2 | Skills | `skills/` 技能系统 | ⏳ 待读 | - |
+| 3.3 | Exec | `exec/` 执行引擎 | ⏳ 待读 | - |
+
+### 阶段 4：持久化 (Persistence)
+**目标:** 理解记忆如何存储
+
+| 序号 | 模块 | 文件 | 状态 | 笔记 |
+|------|------|------|------|------|
+| 4.1 | Memory | `memory/` 记忆 | ⏳ 待读 | - |
+| 4.2 | Compaction | `compaction/` 压缩 | ⏳ 待读 | - |
+
+### 阶段 5：自动化 (Automation)
+**目标:** 理解任务如何调度
+
+| 序号 | 模块 | 文件 | 状态 | 笔记 |
+|------|------|------|------|------|
+| 5.1 | Cron | `cron/` 定时任务 | ⏳ 待读 | - |
+| 5.2 | Heartbeat | `heartbeat/` 心跳 | ⏳ 待读 | - |
+| 5.3 | Hooks | `hooks/` 钩子 | ⏳ 待读 | - |
 
 ### 阶段 2：消息流 (Message Flow)
 **目标:** 理解消息如何路由和交付
