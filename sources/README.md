@@ -17,7 +17,7 @@
 
 ## 📖 学习路径
 
-### 阶段 1：核心架构 (Core Architecture) ✅ 80% 完成
+### 阶段 1：核心架构 (Core Architecture) ✅ 90% 完成
 **目标:** 理解 Agent 如何启动和运行
 
 | 序号 | 模块 | 文件 | 状态 | 笔记 |
@@ -26,7 +26,8 @@
 | 1.2 | Agent Loop | 循环逻辑 | ✅ 完成 | [agent-loop.md](./core/agent-loop.md) |
 | 1.3 | Session | 管理逻辑 | ✅ 完成 | [session-management.md](./core/session-management.md) |
 | 1.4 | Context | 组装机制 | ✅ 完成 | [context-assembly.md](./core/context-assembly.md) |
-| 1.5 | Compaction | 压缩机制 | 🔄 进行中 | - |
+| 1.5 | Compaction | 压缩机制 | ✅ 完成 | [compaction-mechanism.md](./core/compaction-mechanism.md) |
+| 1.6 | Pruning | 修剪机制 | 🔄 进行中 | - |
 
 ### 阶段 2：消息流 (Message Flow)
 **目标:** 理解消息如何路由和交付

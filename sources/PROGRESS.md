@@ -1,14 +1,14 @@
 # 源码走读进度追踪
 
-**最后更新:** 2026-03-11 00:17  
-**当前任务:** Context 组装完成，准备阅读 Compaction
+**最后更新:** 2026-03-11 00:23  
+**当前任务:** Compaction 完成，准备阅读 Session Pruning
 
 ---
 
 ## 📍 当前位置
 
 **阶段:** 1 - 核心架构  
-**下一步:** Compaction 机制
+**下一步:** Session Pruning 机制
 
 ---
 
@@ -20,6 +20,7 @@
 | 12:55 | Agent Loop | 循环逻辑 | [agent-loop.md](./core/agent-loop.md) |
 | 13:05 | Session | 管理逻辑 | [session-management.md](./core/session-management.md) |
 | 00:17 | Context | 组装机制 | [context-assembly.md](./core/context-assembly.md) |
+| 00:23 | Compaction | 压缩机制 | [compaction-mechanism.md](./core/compaction-mechanism.md) |
 
 ---
 
@@ -27,7 +28,7 @@
 
 | 开始时间 | 模块 | 文件 | 预计完成 |
 |----------|------|------|----------|
-| 00:17 | Compaction | 压缩机制 | 00:25 |
+| 00:23 | Pruning | 修剪机制 | 00:30 |
 
 ---
 
