@@ -39,16 +39,26 @@ flowchart LR
 
 | 章节 | 主题 | 状态 | 核心内容 |
 |------|------|------|----------|
-| 第 0 章 | 准备工作 | 🚧 进行中 | 环境检查、概念速览、学习路径 |
-| 第 1 章 | Gateway 架构详解 | ⏳ 待发布 | WebSocket 协议、连接生命周期、事件驱动 |
-| 第 2 章 | Agent 运行时 | ⏳ 待发布 | 工作空间注入、会话引导、工具调用 |
-| 第 3 章 | 会话管理 | ⏳ 待发布 | sessionKey 生成、DM/群聊隔离、存储结构 |
-| 第 4 章 | 技能系统 | ⏳ 待发布 | 技能加载、SKILL.md 规范、工具注册 |
-| 第 5 章 | 安全模型 | ⏳ 待发布 | 信任边界、配对/允许列表、沙箱隔离 |
-| 第 6 章 | 多 Agent 路由 | ⏳ 待发布 | 路由决策、会话隔离、跨 Agent 通信 |
-| 第 7 章 | 实战：构建技能 | ⏳ 待发布 | 完整技能开发流程 |
+| 第 0 章 | 准备工作 | ✅ 已完成 | 环境检查、概念速览、学习路径 |
+| 第 1 章 | Gateway 架构详解 | ✅ 已完成 | WebSocket 协议、连接生命周期、事件驱动 |
+| 第 2 章 | Agent 运行时 | ✅ 已完成 | 工作空间注入、会话引导、工具调用链路 |
+| 第 3 章 | 会话管理 | ✅ 已完成 | sessionKey 生成、DM/群聊隔离、存储结构 |
+| 第 4 章 | 技能系统 | ✅ 已完成 | 技能加载、SKILL.md 规范、工具注册 |
+| 第 5 章 | 安全模型 | ✅ 已完成 | 信任边界、配对/允许列表、沙箱隔离 |
+| 第 6 章 | 多 Agent 路由 | ✅ 已完成 | 路由决策、会话隔离、跨 Agent 通信 |
+| 第 7 章 | 实战：构建技能 | ✅ 已完成 | GitHub Issue Tracker 完整技能开发流程 |
 
 **图例：** 🚧 进行中 | ⏳ 待发布 | ✅ 已完成
+
+---
+
+## 📊 内容统计
+
+- **总章节数**: 8/8 (100% 完成)
+- **总内容量**: 77.3KB
+- **图表数量**: 30+ Mermaid 流程图/时序图/状态图
+- **实战练习**: 40+ 个实战任务
+- **最后更新**: 2026-03-10
 
 ---
 
@@ -85,25 +95,24 @@ flowchart LR
 ```
 openclaw-deep-dive/
 ├── README.md                 # 本文件 - 学习导航
+├── PROGRESS.md               # 项目进度追踪
+├── LEARNING-CHECKLIST.md     # 学习检查清单
 ├── chapters/                 # 章节内容
 │   ├── 00-getting-ready.md   # 第 0 章：准备工作
 │   ├── 01-gateway-architecture.md
 │   ├── 02-agent-runtime.md
 │   ├── 03-session-management.md
-│   ├── 04-skills-system.md
+│   ├── 04-skill-system.md
 │   ├── 05-security-model.md
 │   ├── 06-multi-agent-routing.md
-│   └── 07-build-a-skill.md
+│   └── 07-building-skills.md
+├── appendix/                 # 附录
+│   └── A-data-flow.md        # 完整数据流转图
 ├── diagrams/                 # 独立图表文件
 │   └── *.excalidraw          # Excalidraw 源文件
-├── examples/                 # 代码示例
-│   ├── configs/              # 配置示例
-│   ├── skills/               # 技能示例
-│   └── scripts/              # 脚本示例
-└── appendix/                 # 附录
-    ├── troubleshooting.md    # 故障诊断
-    ├── cli-reference.md      # CLI 命令参考
-    └── glossary.md           # 术语表
+└── examples/                 # 代码示例
+    ├── configs/              # 配置示例
+    └── scripts/              # 脚本示例
 ```
 
 ---
@@ -142,4 +151,4 @@ MIT License - 和 OpenClaw 一样
 
 ---
 
-_最后更新：2026-03-09_
+_最后更新：2026-03-10 (全书 8 章完成 100%)_
