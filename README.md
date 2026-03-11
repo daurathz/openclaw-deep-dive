@@ -1,4 +1,4 @@
-# OpenClaw 深度学习指南 🦞
+# OpenClaw 深度学习笔记 🦞
 
 > _"EXFOLIATE! EXFOLIATE!"_ — A space lobster, probably
 
@@ -6,99 +6,47 @@
 
 ## 📖 这是什么？
 
-这是 OpenClaw 创作者 Peter 为你准备的**系统性深度学习资料**。
+这是 OpenClaw 创作者 Peter 的**系统性源码学习笔记**。
 
-不是简单的使用教程，而是带你深入理解：
-- **为什么这样设计** - 设计哲学和权衡
-- **底层如何工作** - 源码级别的机制解析
-- **如何充分利用** - 最佳实践和实战案例
-
----
-
-## 🎯 学习路径
-
-```mermaid
-flowchart LR
-    Start[开始学习] --> Ch0[第 0 章<br/>准备工作]
-    Ch0 --> Ch1[第 1 章<br/>Gateway 架构]
-    Ch1 --> Ch2[第 2 章<br/>Agent 运行时]
-    Ch2 --> Ch3[第 3 章<br/>会话管理]
-    Ch3 --> Ch4[第 4 章<br/>技能系统]
-    Ch4 --> Ch5[第 5 章<br/>安全模型]
-    Ch5 --> Ch6[第 6 章<br/>多 Agent 路由]
-    Ch6 --> Ch7[第 7 章<br/>实战：构建技能]
-    Ch7 --> Done[🎓 毕业]
-    
-    style Start fill:#e1f5ff
-    style Done fill:#d4edda
-```
+通过阅读 OpenClaw 源码（`dist/` 目录），记录：
+- **架构设计哲学** - 为什么这样设计
+- **底层工作机制** - 源码级别的实现细节
+- **关键设计模式** - 可复用的架构模式
 
 ---
 
-## 📚 章节列表
-
-| 章节 | 主题 | 状态 | 核心内容 |
-|------|------|------|----------|
-| 第 0 章 | 准备工作 | ✅ 已完成 | 环境检查、概念速览、学习路径 |
-| 第 1 章 | Gateway 架构详解 | ✅ 已完成 | WebSocket 协议、连接生命周期、事件驱动 |
-| 第 2 章 | Agent 运行时 | ✅ 已完成 | 工作空间注入、会话引导、工具调用链路 |
-| 第 3 章 | 会话管理 | ✅ 已完成 | sessionKey 生成、DM/群聊隔离、存储结构 |
-| 第 4 章 | 技能系统 | ✅ 已完成 | 技能加载、SKILL.md 规范、工具注册 |
-| 第 5 章 | 安全模型 | ✅ 已完成 | 信任边界、配对/允许列表、沙箱隔离 |
-| 第 6 章 | 多 Agent 路由 | ✅ 已完成 | 路由决策、会话隔离、跨 Agent 通信 |
-| 第 7 章 | 实战：构建技能 | ✅ 已完成 | GitHub Issue Tracker 完整技能开发流程 |
-
-**图例：** 🚧 进行中 | ⏳ 待发布 | ✅ 已完成
-
----
-
-## 📊 内容统计
-
-- **总章节数**: 8/8 (100% 完成)
-- **总内容量**: 77.3KB
-- **图表数量**: 30+ Mermaid 流程图/时序图/状态图
-- **实战练习**: 40+ 个实战任务
-- **最后更新**: 2026-03-10
-
----
-
-## 🛠️ 如何使用
-
-### 前置要求
-
-- ✅ 已安装 OpenClaw (`npm install -g openclaw@latest`)
-- ✅ Gateway 正常运行 (`openclaw gateway status`)
-- ✅ 至少一个可用的 Agent
-- ✅ 基本的 Node.js 和命令行知识
-
-### 学习方式
-
-1. **按顺序阅读** - 每章建立在前面章节的基础上
-2. **动手实践** - 每章都有实战练习
-3. **提问讨论** - Slack 随时问我 (@peter)
-
-### 推荐节奏
-
-```
-每周 1-2 章：
-  - 阅读章节内容 (1-2 小时)
-  - 完成实战练习 (1-2 小时)
-  - Slack 讨论问题 (灵活)
-  
-预计周期：6-8 周完成核心内容
-```
-
----
-
-## 📁 目录结构
+## 🗂️ 目录结构
 
 ```
 openclaw-deep-dive/
-├── README.md                 # 本文件 - 学习导航
-├── PROGRESS.md               # 项目进度追踪
-├── LEARNING-CHECKLIST.md     # 学习检查清单
-├── chapters/                 # 章节内容
-│   ├── 00-getting-ready.md   # 第 0 章：准备工作
+├── README.md                 # 本文件 - 导航与说明
+├── PROGRESS.md               # 学习进度追踪
+├── HEARTBEAT.md              # 当前待执行任务
+├── GOVERNANCE.md             # 项目管理规范 (待创建)
+│
+├── sources/                  # 📚 核心学习笔记 (按源码结构组织)
+│   ├── README.md             # sources 目录导航
+│   ├── PROGRESS.md           # 模块进度详情
+│   │
+│   ├── gateway/              # Gateway 系统
+│   │   └── entry.md          # 入口逻辑、CLI 路由、启动流程
+│   ├── agents/               # Agent 运行时
+│   │   └── runtime.md        # Agent Loop、会话引导、技能快照
+│   ├── sessions/             # 会话管理
+│   │   └── management.md     # AcpSessionManager、Actor 队列
+│   ├── skills/               # 技能系统
+│   │   └── system.md         # 技能加载、快照、调用机制
+│   ├── channels/             # 通道系统
+│   │   └── system.md         # 插件架构、ChannelManager
+│   ├── routing/              # 消息路由
+│   │   └── inbound.md        # 入站消息处理、路由决策
+│   ├── context/              # 上下文管理
+│   │   └── assembly.md       # 上下文组装、记忆检索
+│   └── tools/                # 工具系统
+│       └── exec-security.md  # exec 安全模型、审批流程
+│
+├── chapters/                 # 📖 详细章节版 (历史版本，内容更详细)
+│   ├── 00-getting-ready.md
 │   ├── 01-gateway-architecture.md
 │   ├── 02-agent-runtime.md
 │   ├── 03-session-management.md
@@ -106,24 +54,76 @@ openclaw-deep-dive/
 │   ├── 05-security-model.md
 │   ├── 06-multi-agent-routing.md
 │   └── 07-building-skills.md
-├── appendix/                 # 附录
-│   └── A-data-flow.md        # 完整数据流转图
-├── diagrams/                 # 独立图表文件
-│   └── *.excalidraw          # Excalidraw 源文件
-└── examples/                 # 代码示例
-    ├── configs/              # 配置示例
-    └── scripts/              # 脚本示例
+│
+├── examples/                 # 💻 代码示例
+│   ├── configs/              # 配置示例
+│   └── running/              # 运行日志示例
+├── diagrams/                 # 🎨 架构图
+│   └── *.excalidraw
+└── appendix/                 # 📎 补充材料
+    └── A-data-flow.md
 ```
 
 ---
 
-## 🎨 图表说明
+## 📚 如何使用
 
-本教程使用 **Mermaid** 语法绘制流程图，直接在 GitHub 上即可渲染。
+### 快速开始
 
-如果你想查看或编辑 Excalidraw 手绘风格图表：
-1. 访问 https://excalidraw.com/
-2. 导入 `diagrams/` 目录下的 `.excalidraw` 文件
+1. **从 `sources/` 开始** - 按模块组织，对应 OpenClaw 源码结构
+2. **查看 `sources/PROGRESS.md`** - 了解已完成模块和待读清单
+3. **深入 `chapters/`** - 需要更详细解释时阅读章节版
+
+### 学习路径推荐
+
+```
+阶段 1: 核心架构 (✅ 已完成)
+  └─> gateway/entry.md → agents/runtime.md → sessions/management.md
+
+阶段 2: 消息流 (✅ 已完成)
+  └─> routing/inbound.md → channels/system.md → context/assembly.md
+
+阶段 3: 工具与技能 (✅ 已完成)
+  └─> tools/exec-security.md → skills/system.md
+
+阶段 4: 深入扩展 (⏳ 待开始)
+  └─> 记忆系统、上下文压缩、Cron 调度、钩子系统
+```
+
+---
+
+## 📊 当前进度
+
+| 阶段 | 模块 | 状态 | 笔记 |
+|------|------|------|------|
+| 阶段 1 | Gateway 入口 | ✅ | `gateway/entry.md` |
+| 阶段 1 | Agent 运行时 | ✅ | `agents/runtime.md` |
+| 阶段 1 | 会话管理 | ✅ | `sessions/management.md` |
+| 阶段 2 | 消息路由 | ✅ | `routing/inbound.md` |
+| 阶段 2 | 通道系统 | ✅ | `channels/system.md` |
+| 阶段 2 | 上下文组装 | ✅ | `context/assembly.md` |
+| 阶段 3 | 工具执行 | ✅ | `tools/exec-security.md` |
+| 阶段 3 | 技能系统 | ✅ | `skills/system.md` |
+
+**总计:** 8/8 核心模块完成 (100%)
+
+详细进度见 [`sources/PROGRESS.md`](./sources/PROGRESS.md)
+
+---
+
+## 🔑 关键设计模式
+
+通过源码阅读发现的核心设计模式：
+
+| 模式 | 应用场景 | 说明 |
+|------|----------|------|
+| 渐进式启动 | Gateway | 先验证配置和密钥，再启动服务器 |
+| 优雅降级 | Secrets 加载 | 失败时保持上次已知良好状态 |
+| 快照隔离 | 技能系统 | 每次调用使用独立快照，避免污染 |
+| Actor 模型 | 会话管理 | 会话串行化处理，避免并发冲突 |
+| 插件化架构 | 通道系统 | 通道作为插件动态加载 |
+| 两阶段提交 | 工具审批 | exec 审批需要用户确认 |
+| CLI 路由 | 命令处理 | 根据命令路径快速路由到处理函数 |
 
 ---
 
@@ -140,15 +140,15 @@ openclaw-deep-dive/
 ## 📞 联系
 
 - Slack: @peter
-- GitHub: @daurathz
+- GitHub: https://github.com/daurathz/openclaw-deep-dive
 - 社区: https://discord.com/invite/clawd
 
 ---
 
 ## 📜 许可证
 
-MIT License - 和 OpenClaw 一样
+MIT License
 
 ---
 
-_最后更新：2026-03-10 (全书 8 章完成 100%)_
+_最后更新：2026-03-11 (整合 main 和 master 分支)_
