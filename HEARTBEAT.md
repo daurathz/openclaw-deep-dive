@@ -1,13 +1,13 @@
 # HEARTBEAT.md - 当前任务状态
 
-**最后更新:** 2026-03-11 09:45  
-**状态:** 整合完成，等待下一步指令
+**最后更新:** 2026-03-11 09:52  
+**状态:** 分支整合完成 ✅
 
 ---
 
 ## ✅ 已完成任务
 
-### 分支整合 (2026-03-11)
+### 分支整合 (2026-03-11) ✅
 
 - [x] 备份 main 分支 (`backup-main-before-merge`)
 - [x] 创建整合分支 (`integrate`)
@@ -15,54 +15,46 @@
 - [x] 解决 `sources/PROGRESS.md` 冲突
 - [x] 更新根目录 `README.md`
 - [x] 创建 `GOVERNANCE.md` 管理规范
-- [x] 删除冗余文件 (`PROGRESS.md`, `LEARNING-CHECKLIST.md`)
+- [x] 删除冗余文件
 - [x] 提交整合结果
+- [x] 重置 main 到 integrate
+- [x] 强制推送到远程
+- [x] 删除本地无用分支 (integrate, backup-main-before-merge)
+- [x] 删除远程 master 分支
+- [x] 删除远程 integrate 分支
+- [x] 清理远程跟踪
 
-**提交:** `428dd65` - refactor: 整合 main 和 master 分支
+**最终状态:**
+- 唯一分支：`main` (本地 + 远程)
+- 提交：`c4028f2` (整合完成)
+- 仓库：https://github.com/daurathz/openclaw-deep-dive
 
 ---
 
 ## 📋 待执行任务
 
-### 选项 1: 推送到远程
+### 选项 1: 继续源码阅读 (阶段 4)
 
-```bash
-# 推送 integrate 分支
-git push origin integrate
-
-# 在 GitHub 上:
-# 1. 设置 main 为保护分支
-# 2. 删除 master 分支
-# 3. 将 integrate 合并到 main (或直接替换 main)
-
-# 本地清理
-git branch -D master
-git push origin --delete master
-```
-
-### 选项 2: 继续源码阅读
-
-阶段 4 待读模块:
+待读模块:
 - [ ] 记忆系统 (`memory/`)
-- [ ] 上下文压缩 (`compaction/`)
-- [ ] 会话修剪 (`pruning/`)
+- [ ] 上下文压缩 (`compaction/`) - 已有笔记在 `sources/core/compaction-mechanism.md`
+- [ ] 会话修剪 (`pruning/`) - 已有笔记在 `sources/core/session-pruning.md`
 
-### 选项 3: 内容优化
+### 选项 2: 内容优化
 
-- [ ] 把 `chapters/` 的详细内容整合到 `sources/` 对应模块
+- [ ] 把 `sources/core/` 移动到对应模块目录
+- [ ] 把 `chapters/` 的详细内容整合到 `sources/`
 - [ ] 为每个模块添加 `README.md` 导航
-- [ ] 整理 `examples/` 目录
+
+### 选项 3: 其他任务
+
+等待老鄂指示
 
 ---
 
 ## 🎯 下一步建议
 
-**推荐:** 先推送远程，确保整合成果安全
-
-1. 推送 `integrate` 分支到 GitHub
-2. 在 GitHub 上审查变更
-3. 删除 `master` 分支
-4. 将 `integrate` 合并到 `main` (或重置 `main` 到 `integrate`)
+**推荐:** 继续阶段 4 源码阅读，或等待新任务指令
 
 ---
 
