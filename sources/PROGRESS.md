@@ -1,145 +1,104 @@
 # OpenClaw 源码阅读进度
 
-**最后更新:** 2026-03-11 09:45 (Asia/Shanghai)  
-**当前状态:** 整合 main 和 master 分支  
-**Git:** 整合中  
+**最后更新:** 2026-03-11 10:25 (Asia/Shanghai)  
+**当前状态:** 阶段 1-4 完成 ✅ | 阶段 5 待开始 ⏳  
+**Git:** `47e815a` · 10 个模块目录 · 15 个笔记文件  
 **仓库:** https://github.com/daurathz/openclaw-deep-dive
 
 ---
 
 ## 📊 总览
 
-**8 个核心模块已完成 ✅**
+| 阶段 | 主题 | 模块 | 进度 |
+|------|------|------|------|
+| 阶段 1 | 核心架构 | Gateway, Agents, Sessions, Context | ✅ 4/4 |
+| 阶段 2 | 消息流 | Routing, Channels | ✅ 2/2 |
+| 阶段 3 | 工具与技能 | Tools, Skills | ✅ 2/2 |
+| 阶段 4 | 持久化 | Compaction, Pruning | ✅ 2/2 |
+| 阶段 5 | 自动化 | Cron, Hooks, Subagents, Heartbeat | ⏳ 0/4 |
 
-| 模块 | 笔记文件 | 核心内容 |
+**总计:** 10/14 模块完成 (71%)
+
+**关键设计模式:** 渐进式启动 · 优雅降级 · 快照隔离 · Actor 模型 · 插件化架构 · 两阶段提交
+
+---
+
+## ✅ 已完成模块
+
+### 阶段 1 - 核心架构
+
+| 模块 | 目录 | 笔记文件 |
+|------|------|----------|
+| Gateway 入口 | `01-gateway/` | `entry.md`, `gateway-architecture.md` |
+| Agent 运行时 | `01-agents/` | `runtime.md`, `agent-loop.md` |
+| 会话管理 | `01-sessions/` | `management.md`, `session-management.md` |
+| 上下文组装 | `01-context/` | `assembly.md`, `context-assembly.md` |
+
+### 阶段 2 - 消息流
+
+| 模块 | 目录 | 笔记文件 |
+|------|------|----------|
+| 消息路由 | `02-routing/` | `inbound.md` |
+| 通道系统 | `02-channels/` | `system.md`, `messages-channels.md` |
+
+### 阶段 3 - 工具与技能
+
+| 模块 | 目录 | 笔记文件 |
+|------|------|----------|
+| 工具执行 | `03-tools/` | `exec-security.md` |
+| 技能系统 | `03-skills/` | `system.md` |
+
+### 阶段 4 - 持久化
+
+| 模块 | 目录 | 笔记文件 |
+|------|------|----------|
+| 上下文压缩 | `04-compaction/` | `compaction-mechanism.md` |
+| 会话修剪 | `04-pruning/` | `session-pruning.md` |
+
+---
+
+## 📋 待读清单 (阶段 5)
+
+| 模块 | 预计目录 | 核心内容 |
 |------|----------|----------|
-| Gateway 入口 | `gateway/entry.md` | CLI 路由/锁机制/Secrets 快照/渐进式启动 |
-| Agent 运行时 | `agents/runtime.md` | 会话解析/技能快照/模型回退/ACP 集成 |
-| 消息路由 | `routing/inbound.md` | 分层路由/回复调度/TTS/钩子系统 |
-| 工具执行 | `tools/exec-security.md` | 三层安全/审批管理/Allowlist |
-| 技能系统 | `skills/system.md` | 技能加载/快照/安装/调用 |
-| 会话管理 | `sessions/management.md` | AcpSessionManager/Actor 队列/运行时缓存 |
-| 通道系统 | `channels/system.md` | 插件架构/ChannelManager/账户绑定 |
-| 上下文组装 | `context/assembly.md` | 上下文构建/记忆检索/优先级 |
-
-**关键设计模式:**
-- 渐进式启动/加载
-- 优雅降级
-- 快照隔离
-- Actor 模型 (会话序列化)
-- 插件化架构 (通道/技能)
-- 两阶段提交 (审批)
+| Cron 调度 | `05-cron/` | 定时任务/调度机制 |
+| 钩子系统 | `05-hooks/` | 生命周期钩子/事件拦截 |
+| 子 Agent 系统 | `05-subagents/` | 子 Agent 创建/管理/通信 |
+| 心跳机制 | `05-heartbeat/` | 健康检查/心跳超时处理 |
 
 ---
 
-## ✅ 已完成模块详情
+## 📚 阅读顺序
 
-### 阶段 1 - 核心架构 ✅
-
-| 模块 | 文件 | 状态 | 核心内容 |
-|------|------|------|----------|
-| Gateway 入口 | `gateway/entry.md` | ✅ | CLI 启动流程、Gateway 服务器初始化、锁机制、Secrets 快照 |
-| Agent 运行时 | `agents/runtime.md` | ✅ | 会话解析、技能快照、模型回退、ACP 集成、交付计划 |
-| 消息路由 | `routing/inbound.md` | ✅ | 上下文标准化、Agent 路由决策、会话记录、回复调度、TTS 集成 |
-| 工具执行 | `tools/exec-security.md` | ✅ | Exec 审批配置、ExecApprovalManager、安全模型、Allowlist 匹配 |
-| 技能系统 | `skills/system.md` | ✅ | 技能加载、快照构建、安装机制、调用方式 |
-
-### 阶段 2 - 会话管理 ✅
-
-| 模块 | 文件 | 状态 | 核心内容 |
-|------|------|------|----------|
-| 会话管理 | `sessions/management.md` | ✅ | AcpSessionManager、Actor 队列、运行时缓存、会话存储 |
-
-### 阶段 3 - 通道与上下文 ✅
-
-| 模块 | 文件 | 状态 | 核心内容 |
-|------|------|------|----------|
-| 通道系统 | `channels/system.md` | ✅ | 插件架构、ChannelManager、账户绑定 |
-| 上下文组装 | `context/assembly.md` | ✅ | 上下文构建、记忆检索、优先级策略 |
+```
+阶段 1: Gateway → Agents → Sessions → Context
+阶段 2: Routing → Channels
+阶段 3: Tools → Skills
+阶段 4: Compaction → Pruning
+阶段 5: Cron → Hooks → Subagents → Heartbeat
+```
 
 ---
 
-## 📋 待读清单 (阶段 4-5)
-
-### 阶段 4：持久化与记忆
-- [ ] 记忆系统 (`memory/`)
-- [ ] 上下文压缩 (`compaction/`)
-- [ ] 会话修剪 (`pruning/`)
-
-### 阶段 5：自动化与扩展
-- [ ] Cron 调度 (`cron/`)
-- [ ] 心跳机制 (`heartbeat/`)
-- [ ] 钩子系统 (`hooks/`)
-- [ ] 子 Agent 系统 (`subagents/`)
-
----
-
-## 📈 统计
-
-- **总模块数:** 8
-- **已完成:** 8 (100%)
-- **进行中:** 0
-- **待读:** 6
-
----
-
-## 🚧 阻塞/问题
-
-无 ✅
-
----
-
-## 📚 阅读顺序建议
-
-1. ✅ **Gateway 入口逻辑** — `openclaw.mjs` → `entry.js` → `run-main.js` → `gateway-cli.js`
-2. ✅ **Agent 运行时** — Agent 如何启动、会话如何创建
-3. ✅ **消息路由** — 消息如何从通道到 Agent 再到模型
-4. ✅ **工具执行** — exec 工具的安全模型和审批流程
-5. ✅ **技能系统** — 技能的加载、注册、调用机制
-6. ✅ **会话管理** — 会话生命周期、Actor 模型
-7. ✅ **通道系统** — 插件架构、多通道支持
-8. ✅ **上下文组装** — 记忆检索、上下文优先级
-
----
-
-## 🔑 关键发现摘要
+## 🔑 关键发现
 
 ### Gateway 启动流程
-
 ```
-openclaw.mjs (入口包装器)
-  ↓
-entry.js (版本检查、警告过滤、profile 解析)
-  ↓
-run-main-BcgwOk2p.js (CLI 路由系统)
-  ↓
-gateway-cli-C2ZZYgwu.js (Gateway 命令注册)
-  ↓
-startGatewayServer() (核心启动函数)
-  ↓
-createGatewayRuntimeState() (创建运行时状态)
-  ↓
-attachGatewayWsHandlers() (绑定 WebSocket 处理器)
+openclaw.mjs → entry.js → run-main.js → gateway-cli.js 
+→ startGatewayServer() → createGatewayRuntimeState() 
+→ attachGatewayWsHandlers()
 ```
 
-### 核心组件
-
-1. **CLI 路由系统** — 根据命令路径快速路由到专用处理函数
-2. **Gateway 锁机制** — 防止同一端口重复启动
-3. **配置热重载** — 监听 config 变化，必要时重启 Gateway
-4. **Secrets 运行时快照** — 启动时激活密钥，支持热重载
-5. **插件系统** — 插件在 Gateway 启动时加载并注册方法
-
-### 设计亮点
-
+### 核心设计亮点
 - **渐进式启动** — 先验证配置和密钥，再启动服务器
 - **优雅降级** — 密钥加载失败时保持上次已知良好状态
-- **多绑定模式** — 支持 loopback/lan/tailnet/custom 多种绑定方式
-- **健康检查** — 定期广播健康状态，支持服务发现
+- **快照隔离** — 技能/会话使用独立快照，避免污染
+- **Actor 模型** — 会话串行化处理，避免并发冲突
+- **插件化架构** — 通道/技能作为插件动态加载
 
 ---
 
-**备注:** 源码位于 `/home/openclaw/.nvm/versions/node/v24.14.0/lib/node_modules/openclaw/`
+**源码位置:** `/home/openclaw/.nvm/versions/node/v24.14.0/lib/node_modules/openclaw/`
 - `dist/` — 编译后的 JavaScript (主要阅读目标)
 - `docs/` — 文档
 - `skills/` — 内置技能
