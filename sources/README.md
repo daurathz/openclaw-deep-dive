@@ -1,7 +1,7 @@
 # OpenClaw 源码学习笔记
 
-**最后更新:** 2026-03-11 10:05  
-**进度:** 阶段 1-4 完成 (10/14 模块)  
+**最后更新:** 2026-03-11 16:10  
+**进度:** 阶段 1-5 完成 (13/13 模块) ✅  
 **GitHub:** https://github.com/daurathz/openclaw-deep-dive
 
 ---
@@ -45,8 +45,17 @@ sources/
 ├── 04-compaction/            # 阶段 4: 上下文压缩
 │   └── compaction-mechanism.md
 │
-└── 04-pruning/               # 阶段 4: 会话修剪
-    └── session-pruning.md
+├── 04-pruning/               # 阶段 4: 会话修剪
+│   └── session-pruning.md
+│
+├── 05-cron/                  # 阶段 5: Cron 调度
+│   └── cron-scheduler.md     # 定时任务调度机制
+│
+├── 05-hooks/                 # 阶段 5: Workspace Hooks
+│   └── workspace-hooks.md    # 生命周期钩子系统
+│
+└── 05-subagents/             # 阶段 5: Subagents
+    └── subagent-registry.md  # 子 Agent 注册与管理
 ```
 
 ---
@@ -65,12 +74,11 @@ sources/
 | | Skills | `03-skills/` | ✅ | 1 文件 |
 | **阶段 4** | Compaction | `04-compaction/` | ✅ | 1 文件 |
 | | Pruning | `04-pruning/` | ✅ | 1 文件 |
-| **阶段 5** | Cron | `05-cron/` | ⏳ | 待读 |
-| | Hooks | `05-hooks/` | ⏳ | 待读 |
-| | Subagents | `05-subagents/` | ⏳ | 待读 |
-| | Heartbeat | `05-heartbeat/` | ⏳ | 待读 |
+| **阶段 5** | Cron | `05-cron/` | ✅ | 1 文件 |
+| | Hooks | `05-hooks/` | ✅ | 1 文件 |
+| | Subagents | `05-subagents/` | ✅ | 1 文件 |
 
-**总计:** 10/14 模块完成 (71%)
+**总计:** 13/13 模块完成 (100%) ✅
 
 ---
 
@@ -96,10 +104,10 @@ sources/
 
 9. 上下文压缩 → 10. 会话修剪
 
-### 阶段 5 - 自动化与扩展 ⏳
+### 阶段 5 - 自动化与扩展 ✅
 理解任务如何调度
 
-11. Cron 调度 → 12. 钩子系统 → 13. 子 Agent → 14. 心跳机制
+11. Cron 调度 → 12. 钩子系统 → 13. 子 Agent 系统
 
 ---
 
@@ -138,4 +146,4 @@ sources/
 
 ---
 
-_最后更新：2026-03-11 (目录结构重组完成)_
+_最后更新：2026-03-11 (阶段 5 完成，全部 13 模块 100%)_

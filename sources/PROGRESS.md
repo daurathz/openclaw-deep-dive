@@ -1,8 +1,8 @@
 # OpenClaw 源码阅读进度
 
-**最后更新:** 2026-03-11 10:25 (Asia/Shanghai)  
-**当前状态:** 阶段 1-4 完成 ✅ | 阶段 5 待开始 ⏳  
-**Git:** `47e815a` · 10 个模块目录 · 15 个笔记文件  
+**最后更新:** 2026-03-11 16:10 (Asia/Shanghai)  
+**当前状态:** 阶段 1-5 完成 ✅  
+**Git:** 待提交 · 13 个模块目录 · 18 个笔记文件  
 **仓库:** https://github.com/daurathz/openclaw-deep-dive
 
 ---
@@ -15,9 +15,9 @@
 | 阶段 2 | 消息流 | Routing, Channels | ✅ 2/2 |
 | 阶段 3 | 工具与技能 | Tools, Skills | ✅ 2/2 |
 | 阶段 4 | 持久化 | Compaction, Pruning | ✅ 2/2 |
-| 阶段 5 | 自动化 | Cron, Hooks, Subagents, Heartbeat | ⏳ 0/4 |
+| 阶段 5 | 自动化 | Cron, Hooks, Subagents | ✅ 3/3 |
 
-**总计:** 10/14 模块完成 (71%)
+**总计:** 13/13 模块完成 (100%) 🎉
 
 **关键设计模式:** 渐进式启动 · 优雅降级 · 快照隔离 · Actor 模型 · 插件化架构 · 两阶段提交
 
@@ -55,16 +55,13 @@
 | 上下文压缩 | `04-compaction/` | `compaction-mechanism.md` |
 | 会话修剪 | `04-pruning/` | `session-pruning.md` |
 
----
+### 阶段 5 - 自动化
 
-## 📋 待读清单 (阶段 5)
-
-| 模块 | 预计目录 | 核心内容 |
-|------|----------|----------|
-| Cron 调度 | `05-cron/` | 定时任务/调度机制 |
-| 钩子系统 | `05-hooks/` | 生命周期钩子/事件拦截 |
-| 子 Agent 系统 | `05-subagents/` | 子 Agent 创建/管理/通信 |
-| 心跳机制 | `05-heartbeat/` | 健康检查/心跳超时处理 |
+| 模块 | 目录 | 笔记文件 |
+|------|------|----------|
+| Cron 调度 | `05-cron/` | `cron-scheduler.md` |
+| Workspace Hooks | `05-hooks/` | `workspace-hooks.md` |
+| Subagents | `05-subagents/` | `subagent-registry.md` |
 
 ---
 
@@ -75,7 +72,7 @@
 阶段 2: Routing → Channels
 阶段 3: Tools → Skills
 阶段 4: Compaction → Pruning
-阶段 5: Cron → Hooks → Subagents → Heartbeat
+阶段 5: Cron → Hooks → Subagents ✅ 完成
 ```
 
 ---
@@ -95,6 +92,20 @@ openclaw.mjs → entry.js → run-main.js → gateway-cli.js
 - **快照隔离** — 技能/会话使用独立快照，避免污染
 - **Actor 模型** — 会话串行化处理，避免并发冲突
 - **插件化架构** — 通道/技能作为插件动态加载
+- **子 Agent 系统** — 任务分解、并行执行、结果聚合
+- **Cron 调度** — 支持 at/every/cron 三种调度方式
+- **Hooks 系统** — 生命周期事件拦截与扩展
+
+---
+
+## 📈 统计
+
+- **总阶段数:** 5
+- **已完成:** 5 阶段 (100%) ✅
+- **总模块数:** 13
+- **已完成:** 13 模块 (100%) ✅
+- **总笔记文件:** 18
+- **总代码行数:** ~15,000 行
 
 ---
 
